@@ -1,10 +1,10 @@
 const validator = require("../../commons/validator");
 
-const { ApplicationPayloadSchema } = require("./schema");
+const { PostApplicationPayloadSchema } = require("./schema");
 
 const ApplicationsValidator = {
-  validateApplicationPayload: (payload) => {
-    validator(ApplicationPayloadSchema, payload);
+  validatePostApplicationPayload: (payload) => {
+    validator(PostApplicationPayloadSchema, payload);
   },
 };
 

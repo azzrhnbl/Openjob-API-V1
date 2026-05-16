@@ -1,11 +1,10 @@
 const Joi = require("joi");
 
-const ApplicationPayloadSchema = Joi.object({
+const PostApplicationPayloadSchema = Joi.object({
   job_id: Joi.string().required(),
-
-  status: Joi.string().required(),
+  cover_letter: Joi.string().allow("", null),
 });
 
 module.exports = {
-  ApplicationPayloadSchema,
+  PostApplicationPayloadSchema,
 };
