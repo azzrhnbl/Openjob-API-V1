@@ -5,18 +5,18 @@ const pool = require("../../utils/database");
 const NotFoundError = require("../../commons/exceptions/NotFoundError");
 
 class ApplicationsService {
-  async addApplication(userId, payload) {
+  async addApplication(payload) {
     const id = `application-${nanoid(16)}`;
 
-    const { job_id, status } = payload;
+    const { user_id, job_id, status } = payload;
 
     const query = {
       text: `
-        INSERT INTO applications
-        VALUES($1,$2,$3,$4,$5)
-        RETURNING id
-      `,
-      values: [id, userId, job_id, status, new Date()],
+      INSERT INTO applications
+      VALUES($1,$2,$3,$4,$5)
+      RETURNING id
+    `,
+      values: [id, user_id, job_id, status, new Date()],
     };
 
     const result = await pool.query(query);

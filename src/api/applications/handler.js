@@ -28,13 +28,15 @@ class ApplicationsHandler {
 
       const applicationId = await this._service.addApplication({
         user_id: req.auth.id,
-        ...req.body,
+        job_id: req.body.job_id,
+        cover_letter: req.body.cover_letter,
+        status: req.body.status || "pending",
       });
 
       return res.status(201).json({
         status: "success",
         data: {
-          id: applicationId,
+          applicationId,
         },
       });
     } catch (error) {
