@@ -106,6 +106,8 @@ class ApplicationsHandler {
 
   async putApplicationByIdHandler(req, res, next) {
     try {
+      this._validator.validatePutApplicationPayload(req.body);
+
       await this._service.editApplicationById(req.params.id, req.body.status);
 
       return res.json({
