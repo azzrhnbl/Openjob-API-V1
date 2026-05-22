@@ -36,7 +36,7 @@ class ApplicationsHandler {
       return res.status(201).json({
         status: "success",
         data: {
-          applicationId,
+          id: applicationId,
         },
       });
     } catch (error) {
